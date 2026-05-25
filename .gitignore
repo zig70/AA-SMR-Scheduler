@@ -6,6 +6,9 @@
 # dotenv files
 .env
 
+# local dev secrets (passwords in connection strings)
+backend/SMR.Api/appsettings.Development.json
+
 # User-specific files
 *.rsuser
 *.suo
