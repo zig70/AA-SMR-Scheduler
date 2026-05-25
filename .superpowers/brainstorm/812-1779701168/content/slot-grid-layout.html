@@ -1,0 +1,105 @@
+<h2>7-Day Slot Calendar Layout</h2>
+<p class="subtitle">How should the booking agent view available slots? Pick the layout that feels right for daily use.</p>
+
+<div class="cards">
+
+  <!-- Option A: Day columns with mechanic rows -->
+  <div class="card" data-choice="a" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0f172a;padding:12px;font-size:11px;font-family:monospace;">
+      <div style="display:grid;grid-template-columns:80px repeat(7,1fr);gap:2px;color:#e2e8f0;">
+        <!-- Header row: days -->
+        <div style="color:#64748b;padding:4px;"></div>
+        <div style="background:#1e293b;padding:4px;text-align:center;border-radius:3px;font-weight:bold;color:#fbbf24;">Mon<br/><span style="color:#64748b;font-weight:normal;">26</span></div>
+        <div style="background:#1e293b;padding:4px;text-align:center;border-radius:3px;">Tue<br/><span style="color:#64748b;">27</span></div>
+        <div style="background:#1e293b;padding:4px;text-align:center;border-radius:3px;">Wed<br/><span style="color:#64748b;">28</span></div>
+        <div style="background:#1e293b;padding:4px;text-align:center;border-radius:3px;">Thu<br/><span style="color:#64748b;">29</span></div>
+        <div style="background:#1e293b;padding:4px;text-align:center;border-radius:3px;">Fri<br/><span style="color:#64748b;">30</span></div>
+        <div style="background:#1e293b;padding:4px;text-align:center;border-radius:3px;">Sat<br/><span style="color:#64748b;">31</span></div>
+        <div style="background:#1e293b;padding:4px;text-align:center;border-radius:3px;">Sun<br/><span style="color:#64748b;">1</span></div>
+        <!-- Time row: 9am -->
+        <div style="color:#64748b;padding:3px 4px;font-size:10px;">9:00</div>
+        <div style="background:#fbbf2490;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#fbbf24;">Dave</div>
+        <div style="background:#fbbf2490;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#fbbf24;">Dave</div>
+        <div style="background:#374151;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#6b7280;">Booked</div>
+        <div style="background:#fbbf2490;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#fbbf24;">Dave</div>
+        <div style="background:#fbbf2490;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#fbbf24;">Dave</div>
+        <div style="background:#374151;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#6b7280;">Booked</div>
+        <div style="background:#fbbf2490;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#fbbf24;">Dave</div>
+        <!-- Time row: 9am Sam -->
+        <div style="color:#64748b;padding:3px 4px;font-size:10px;"></div>
+        <div style="background:#fbbf2490;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#fbbf24;">Sam</div>
+        <div style="background:#374151;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#6b7280;">Booked</div>
+        <div style="background:#fbbf2490;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#fbbf24;">Sam</div>
+        <div style="background:#fbbf2490;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#fbbf24;">Sam</div>
+        <div style="background:#374151;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#6b7280;">Booked</div>
+        <div style="background:#fbbf2490;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#fbbf24;">Sam</div>
+        <div style="background:#fbbf2490;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#fbbf24;">Sam</div>
+        <!-- Time row: 10am -->
+        <div style="color:#64748b;padding:3px 4px;font-size:10px;">10:00</div>
+        <div style="background:#374151;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#6b7280;">Booked</div>
+        <div style="background:#fbbf2490;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#fbbf24;">Dave</div>
+        <div style="background:#fbbf2490;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#fbbf24;">Dave</div>
+        <div style="background:#374151;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#6b7280;">Booked</div>
+        <div style="background:#fbbf2490;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#fbbf24;">Dave</div>
+        <div style="background:#fbbf2490;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#fbbf24;">Dave</div>
+        <div style="background:#374151;padding:3px;text-align:center;border-radius:2px;font-size:10px;color:#6b7280;">Booked</div>
+      </div>
+      <div style="margin-top:8px;font-size:10px;color:#64748b;">Rows = time slots × mechanic. Columns = 7 days.</div>
+    </div>
+    <div class="card-body">
+      <h3>A — Time × Mechanic rows, Day columns</h3>
+      <p>Each row is one mechanic's time slot. All mechanics visible at once. Dense but comprehensive — you can see every available slot in the week at a glance.</p>
+    </div>
+  </div>
+
+  <!-- Option B: Mechanic-first columns within each day -->
+  <div class="card" data-choice="b" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#0f172a;padding:12px;font-size:11px;font-family:monospace;">
+      <!-- Day tabs -->
+      <div style="display:flex;gap:4px;margin-bottom:8px;">
+        <div style="background:#fbbf24;color:#0f172a;padding:3px 8px;border-radius:3px;font-weight:bold;font-size:11px;">Mon 26</div>
+        <div style="background:#1e293b;color:#64748b;padding:3px 8px;border-radius:3px;font-size:11px;">Tue</div>
+        <div style="background:#1e293b;color:#64748b;padding:3px 8px;border-radius:3px;font-size:11px;">Wed</div>
+        <div style="background:#1e293b;color:#64748b;padding:3px 8px;border-radius:3px;font-size:11px;">Thu</div>
+        <div style="background:#1e293b;color:#64748b;padding:3px 8px;border-radius:3px;font-size:11px;">Fri</div>
+        <div style="background:#1e293b;color:#64748b;padding:3px 8px;border-radius:3px;font-size:11px;">Sat</div>
+        <div style="background:#1e293b;color:#64748b;padding:3px 8px;border-radius:3px;font-size:11px;">Sun</div>
+      </div>
+      <!-- Mechanic columns for selected day -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;color:#e2e8f0;">
+        <div style="background:#1e293b;border-radius:4px;padding:6px;">
+          <div style="color:#fbbf24;font-weight:bold;margin-bottom:4px;font-size:11px;">🔧 Dave</div>
+          <div style="background:#fbbf2490;padding:3px 5px;border-radius:2px;font-size:10px;margin-bottom:2px;color:#fbbf24;">09:00 ✓</div>
+          <div style="background:#374151;padding:3px 5px;border-radius:2px;font-size:10px;margin-bottom:2px;color:#6b7280;">10:00 ✗</div>
+          <div style="background:#fbbf2490;padding:3px 5px;border-radius:2px;font-size:10px;margin-bottom:2px;color:#fbbf24;">11:00 ✓</div>
+          <div style="background:#fbbf2490;padding:3px 5px;border-radius:2px;font-size:10px;margin-bottom:2px;color:#fbbf24;">13:00 ✓</div>
+          <div style="background:#374151;padding:3px 5px;border-radius:2px;font-size:10px;margin-bottom:2px;color:#6b7280;">14:00 ✗</div>
+        </div>
+        <div style="background:#1e293b;border-radius:4px;padding:6px;">
+          <div style="color:#fbbf24;font-weight:bold;margin-bottom:4px;font-size:11px;">🔧 Sam</div>
+          <div style="background:#374151;padding:3px 5px;border-radius:2px;font-size:10px;margin-bottom:2px;color:#6b7280;">09:00 ✗</div>
+          <div style="background:#fbbf2490;padding:3px 5px;border-radius:2px;font-size:10px;margin-bottom:2px;color:#fbbf24;">10:00 ✓</div>
+          <div style="background:#fbbf2490;padding:3px 5px;border-radius:2px;font-size:10px;margin-bottom:2px;color:#fbbf24;">11:00 ✓</div>
+          <div style="background:#374151;padding:3px 5px;border-radius:2px;font-size:10px;margin-bottom:2px;color:#6b7280;">13:00 ✗</div>
+          <div style="background:#fbbf2490;padding:3px 5px;border-radius:2px;font-size:10px;margin-bottom:2px;color:#fbbf24;">14:00 ✓</div>
+        </div>
+        <div style="background:#1e293b;border-radius:4px;padding:6px;">
+          <div style="color:#fbbf24;font-weight:bold;margin-bottom:4px;font-size:11px;">🔧 Maria</div>
+          <div style="background:#fbbf2490;padding:3px 5px;border-radius:2px;font-size:10px;margin-bottom:2px;color:#fbbf24;">09:00 ✓</div>
+          <div style="background:#fbbf2490;padding:3px 5px;border-radius:2px;font-size:10px;margin-bottom:2px;color:#fbbf24;">10:00 ✓</div>
+          <div style="background:#374151;padding:3px 5px;border-radius:2px;font-size:10px;margin-bottom:2px;color:#6b7280;">11:00 ✗</div>
+          <div style="background:#fbbf2490;padding:3px 5px;border-radius:2px;font-size:10px;margin-bottom:2px;color:#fbbf24;">13:00 ✓</div>
+          <div style="background:#fbbf2490;padding:3px 5px;border-radius:2px;font-size:10px;margin-bottom:2px;color:#fbbf24;">14:00 ✓</div>
+        </div>
+      </div>
+      <div style="margin-top:8px;font-size:10px;color:#64748b;">Day tabs across top. Within a day: one column per mechanic.</div>
+    </div>
+    <div class="card-body">
+      <h3>B — Day tabs, Mechanic columns within</h3>
+      <p>One day visible at a time. Click a day tab to see all mechanics side by side for that day. Cleaner, less dense — easier to book into a specific mechanic's next open slot.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top:16px;">Click your preferred layout, then let me know in the terminal.</p>

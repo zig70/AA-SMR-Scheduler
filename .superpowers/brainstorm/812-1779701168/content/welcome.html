@@ -1,0 +1,44 @@
+<h2>AA SMR Appointment Scheduler</h2>
+<p class="subtitle">Designing the internal scheduling tool to replace spreadsheets and shared calendars</p>
+
+<div class="section">
+  <span class="label">Three User Personas</span>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:12px;">
+    <div style="background:#1e293b;border-radius:8px;padding:16px;border-left:4px solid #fbbf24;">
+      <h3 style="margin:0 0 8px;color:#fbbf24;">📋 Booking Agent</h3>
+      <p style="margin:0;font-size:13px;color:#94a3b8;">Views the 7-day slot calendar, filters by service type, books customer vehicles, receives a unique reference number.</p>
+    </div>
+    <div style="background:#1e293b;border-radius:8px;padding:16px;border-left:4px solid #34d399;">
+      <h3 style="margin:0 0 8px;color:#34d399;">🔧 Mechanic</h3>
+      <p style="margin:0;font-size:13px;color:#94a3b8;">Sees their own today/tomorrow job list, opens appointments, adds timestamped work notes, updates status (Scheduled → In Progress → Completed).</p>
+    </div>
+    <div style="background:#1e293b;border-radius:8px;padding:16px;border-left:4px solid #60a5fa;">
+      <h3 style="margin:0 0 8px;color:#60a5fa;">🏠 Admin</h3>
+      <p style="margin:0;font-size:13px;color:#94a3b8;">Views today's full schedule across all mechanics — a single dashboard snapshot of the whole workshop floor.</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <span class="label">Core Constraints from the Brief</span>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;">
+    <div style="background:#1e293b;border-radius:8px;padding:14px;">
+      <p style="margin:0;font-size:13px;color:#e2e8f0;">✅ 7-day slot calendar view</p>
+      <p style="margin:4px 0 0;font-size:13px;color:#e2e8f0;">✅ Filter by service type</p>
+      <p style="margin:4px 0 0;font-size:13px;color:#e2e8f0;">✅ Double-booking prevention</p>
+      <p style="margin:4px 0 0;font-size:13px;color:#e2e8f0;">✅ Unique booking reference</p>
+      <p style="margin:4px 0 0;font-size:13px;color:#e2e8f0;">✅ Multi-branch / multi-location</p>
+    </div>
+    <div style="background:#1e293b;border-radius:8px;padding:14px;">
+      <p style="margin:0;font-size:13px;color:#64748b;">🚫 No auth/login flows</p>
+      <p style="margin:4px 0 0;font-size:13px;color:#64748b;">🚫 No SMS/Email notifications</p>
+      <p style="margin:4px 0 0;font-size:13px;color:#64748b;">🚫 No rescheduling/cancellation</p>
+      <p style="margin:4px 0 0;font-size:13px;color:#64748b;">🚫 No payments/invoicing</p>
+      <p style="margin:4px 0 0;font-size:13px;color:#64748b;">🚫 No mobile-specific UI</p>
+    </div>
+  </div>
+</div>
+
+<div style="background:#fbbf2415;border:1px solid #fbbf2440;border-radius:8px;padding:14px;margin-top:8px;">
+  <p style="margin:0;font-size:13px;color:#fbbf24;">I have a few clarifying questions before we start designing. Continuing in terminal...</p>
+</div>
