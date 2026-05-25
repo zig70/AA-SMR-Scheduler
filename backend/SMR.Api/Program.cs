@@ -31,6 +31,8 @@ builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
+await DbInitializer.SeedAsync(app);
+
 app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 app.MapControllers();
