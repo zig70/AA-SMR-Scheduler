@@ -12,4 +12,5 @@ public sealed class AppDbContext : DbContext
     public DbSet<Branch> Branches => Set<Branch>();
     public DbSet<Mechanic> Mechanics => Set<Mechanic>();
     public DbSet<Slot> Slots => Set<Slot>();
+    public DbSet<Appointment> Appointments => Set<Appointment>();
 }
