@@ -100,6 +100,10 @@ Requirements mapped directly against the brief.
 
 ## What I'd do with more time
 
+I wanted to showcase using superpowers to plan and build using spec driven development - however, inhindsight it was quite slow compared to creating a wireframe on Figma - however for this kind of interview setting, Figma would have been quicker and simplified the build. the superpower brainstorming got into too much detail.
+
+The actual UX suffered from using superpowers - and highlights the limitations of using agents for visual/UX tasks.
+
 1. **Mechanic work notes** — `WorkNote` entity (AppointmentId, Text, CreatedAt), endpoint `POST /api/v1/appointments/{id}/notes`, displayed chronologically in the mechanic view.
 2. **Appointment status lifecycle** — `Status` enum (Scheduled / InProgress / Completed / NoShow) on `Appointment`, `PATCH /api/v1/appointments/{id}/status`, mechanic can update from their view.
 3. **Admin today's schedule** — single query across all mechanics for the current day, displayed as a read-only board grouped by mechanic.
