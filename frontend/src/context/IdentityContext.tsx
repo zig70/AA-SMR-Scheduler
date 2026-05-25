@@ -10,8 +10,8 @@ export interface Identity {
 
 const IDENTITIES: Identity[] = [
   { role: 'Admin', name: 'Admin', mechanicId: null },
-  { role: 'Mechanic', name: 'Dave', mechanicId: '00000000-0000-0000-0000-000000000001' },
-  { role: 'Mechanic', name: 'Sarah', mechanicId: '00000000-0000-0000-0000-000000000002' },
+  { role: 'Mechanic', name: 'Dave', mechanicId: '00000002-0000-0000-0000-000000000000' },
+  { role: 'Mechanic', name: 'Sarah', mechanicId: '00000003-0000-0000-0000-000000000000' },
 ];
 
 interface IdentityContextValue {

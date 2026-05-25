@@ -20,8 +20,9 @@ public sealed class TestWebApplicationFactory : WebApplicationFactory<Program>
                 services.Remove(descriptor);
             }
 
+            string dbName = Guid.NewGuid().ToString();
             services.AddDbContext<AppDbContext>(options =>
-                options.UseInMemoryDatabase("SmrTestDb"));
+                options.UseInMemoryDatabase(dbName));
         });
     }
 }
