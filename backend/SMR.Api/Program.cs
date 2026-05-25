@@ -1,3 +1,4 @@
+using System.Text.Json.Serialization;
 using Asp.Versioning;
 using FluentValidation;
 using MediatR;
@@ -26,7 +27,9 @@ builder.Services.AddApiVersioning(options =>
 })
 .AddMvc();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(opts =>
+        opts.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 builder.Services.AddHealthChecks();
 
 var app = builder.Build();

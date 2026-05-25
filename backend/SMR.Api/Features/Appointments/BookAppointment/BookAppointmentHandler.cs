@@ -33,13 +33,17 @@ public sealed class BookAppointmentHandler : IRequestHandler<BookAppointmentComm
 
         slot.IsBooked = true;
 
+        Guid appointmentId = Guid.NewGuid();
+
         Appointment appointment = new()
         {
-            Id = Guid.NewGuid(),
+            Id = appointmentId,
             SlotId = slot.Id,
             CustomerName = request.CustomerName,
             CustomerPhone = request.CustomerPhone,
             VehicleReg = request.VehicleReg,
+            ServiceType = request.ServiceType!.Value,
+            Notes = request.Notes,
             CreatedAt = DateTime.UtcNow
         };
 
@@ -54,13 +58,18 @@ public sealed class BookAppointmentHandler : IRequestHandler<BookAppointmentComm
             throw new ConflictException($"Slot {request.SlotId} was booked concurrently. Please choose another slot.");
         }
 
+        string reference = $"SMR-{appointmentId.ToString("N")[..8].ToUpperInvariant()}";
+
         return new AppointmentDto(
-            appointment.Id,
+            appointmentId,
             slot.Id,
             slot.Mechanic.Name,
             slot.StartTime,
             slot.EndTime,
             appointment.CustomerName,
-            appointment.VehicleReg);
+            appointment.VehicleReg,
+            appointment.ServiceType,
+            appointment.Notes,
+            reference);
     }
 }

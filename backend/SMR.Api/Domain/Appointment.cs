@@ -8,5 +8,7 @@ public class Appointment
     public string CustomerName { get; set; } = string.Empty;
     public string CustomerPhone { get; set; } = string.Empty;
     public string VehicleReg { get; set; } = string.Empty;
+    public ServiceType ServiceType { get; set; }
+    public string? Notes { get; set; }
     public DateTime CreatedAt { get; set; }
 }
