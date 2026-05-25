@@ -13,12 +13,17 @@ function Nav() {
         : 'text-zinc-300 hover:text-white hover:bg-zinc-700'
     }`;
 
+  const canBook = identity.role === 'Admin' || identity.role === 'BookingAgent';
+  const isMechanic = identity.role === 'Mechanic';
+
   return (
     <nav className="bg-zinc-900 border-b border-zinc-700 px-6 py-2 flex gap-2">
-      <NavLink to="/" end className={linkClass}>
-        Book a Slot
-      </NavLink>
-      {identity.role === 'Mechanic' && (
+      {(canBook || isMechanic) && (
+        <NavLink to="/" end className={linkClass}>
+          Book a Slot
+        </NavLink>
+      )}
+      {(identity.role === 'Admin' || isMechanic) && (
         <NavLink to="/my-appointments" className={linkClass}>
           My Appointments
         </NavLink>

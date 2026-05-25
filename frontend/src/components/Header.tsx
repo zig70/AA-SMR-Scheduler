@@ -1,6 +1,12 @@
 import { useIdentity } from '../context/IdentityContext';
 import type { Identity } from '../context/IdentityContext';
 
+function roleLabel(id: Identity): string {
+  if (id.role === 'Admin') return 'Admin';
+  if (id.role === 'BookingAgent') return 'Booking Agent';
+  return `Mechanic — ${id.name}`;
+}
+
 export function Header() {
   const { identity, identities, setIdentity } = useIdentity();
 
@@ -31,7 +37,7 @@ export function Header() {
         >
           {identities.map((id: Identity) => (
             <option key={id.name} value={id.name}>
-              {id.role === 'Admin' ? 'Admin' : `Mechanic — ${id.name}`}
+              {roleLabel(id)}
             </option>
           ))}
         </select>

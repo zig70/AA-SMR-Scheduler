@@ -102,9 +102,7 @@ export function SlotGrid() {
   }
 
   const allSlots = slotState.status === 'loaded' ? slotState.slots : [];
-  const filteredSlots = selectedServiceType
-    ? allSlots
-    : allSlots;
+  const filteredSlots = allSlots;
 
   return (
     <section aria-label="Available booking slots">
@@ -170,53 +168,66 @@ export function SlotGrid() {
       )}
 
       {slotState.status === 'loaded' && (
-        <div className="grid grid-cols-7 gap-2">
-          {days.map((day) => {
-            const daySlots = filteredSlots.filter((s) => isSameDay(new Date(s.startTime), day));
-            const label = day.toLocaleDateString('en-GB', {
-              weekday: 'short',
-              day: 'numeric',
-              month: 'short',
-            });
+        <>
+          <p className="text-zinc-400 text-sm mb-4">
+            <span className="text-amber-400 font-medium">{filteredSlots.length}</span> slots available
+            &mdash; click any slot to book an appointment.
+          </p>
+          <div className="grid grid-cols-7 gap-2">
+            {days.map((day) => {
+              const daySlots = filteredSlots.filter((s) => isSameDay(new Date(s.startTime), day));
+              const label = day.toLocaleDateString('en-GB', {
+                weekday: 'short',
+                day: 'numeric',
+                month: 'short',
+              });
 
-            return (
-              <div key={day.toISOString()} className="bg-zinc-800 rounded-lg p-3">
-                <h3 className="text-amber-400 text-xs font-semibold uppercase tracking-wide mb-2 text-center">
-                  {label}
-                </h3>
-                {daySlots.length === 0 ? (
-                  <p className="text-zinc-500 text-xs text-center">No slots</p>
-                ) : (
-                  <ul className="space-y-1.5">
-                    {daySlots.map((slot) => (
-                      <li key={slot.id}>
-                        <button
-                          onClick={() => setSelectedSlot(slot)}
-                          className="w-full bg-zinc-700 hover:bg-amber-400 hover:text-zinc-950
-                                     text-zinc-100 rounded p-2 text-xs text-left transition-colors
-                                     focus:outline-none focus:ring-2 focus:ring-amber-400"
-                        >
-                          <span className="block font-medium">
-                            {new Date(slot.startTime).toLocaleTimeString('en-GB', {
-                              hour: '2-digit',
-                              minute: '2-digit',
-                            })}
-                            –
-                            {new Date(slot.endTime).toLocaleTimeString('en-GB', {
-                              hour: '2-digit',
-                              minute: '2-digit',
-                            })}
-                          </span>
-                          <span className="block text-zinc-400 mt-0.5">{slot.mechanicName}</span>
-                        </button>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            );
-          })}
-        </div>
+              return (
+                <div key={day.toISOString()} className="bg-zinc-800 rounded-lg p-3">
+                  <h3 className="text-amber-400 text-xs font-semibold uppercase tracking-wide mb-2 text-center">
+                    {label}
+                  </h3>
+                  {daySlots.length === 0 ? (
+                    <p className="text-zinc-500 text-xs text-center">No slots</p>
+                  ) : (
+                    <ul className="space-y-1.5">
+                      {daySlots.map((slot) => (
+                        <li key={slot.id}>
+                          <button
+                            type="button"
+                            onClick={() => setSelectedSlot(slot)}
+                            className="w-full bg-zinc-700 hover:bg-amber-400 hover:text-zinc-950
+                                       text-zinc-100 rounded p-2 text-xs text-left transition-colors
+                                       cursor-pointer focus:outline-none focus:ring-2 focus:ring-amber-400
+                                       group"
+                          >
+                            <span className="block font-semibold">
+                              {new Date(slot.startTime).toLocaleTimeString('en-GB', {
+                                hour: '2-digit',
+                                minute: '2-digit',
+                              })}
+                              {' – '}
+                              {new Date(slot.endTime).toLocaleTimeString('en-GB', {
+                                hour: '2-digit',
+                                minute: '2-digit',
+                              })}
+                            </span>
+                            <span className="block text-zinc-400 group-hover:text-zinc-700 mt-0.5">
+                              {slot.mechanicName}
+                            </span>
+                            <span className="block text-amber-400 group-hover:text-zinc-800 text-xs mt-1 font-medium">
+                              Book &rarr;
+                            </span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </>
       )}
 
       {selectedSlot && (

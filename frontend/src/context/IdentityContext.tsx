@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 
-export type Role = 'Admin' | 'Mechanic';
+export type Role = 'Admin' | 'BookingAgent' | 'Mechanic';
 
 export interface Identity {
   role: Role;
@@ -10,6 +10,7 @@ export interface Identity {
 
 const IDENTITIES: Identity[] = [
   { role: 'Admin', name: 'Admin', mechanicId: null },
+  { role: 'BookingAgent', name: 'Booking Agent', mechanicId: null },
   { role: 'Mechanic', name: 'Dave', mechanicId: '00000002-0000-0000-0000-000000000000' },
   { role: 'Mechanic', name: 'Sarah', mechanicId: '00000003-0000-0000-0000-000000000000' },
   { role: 'Mechanic', name: 'Tom', mechanicId: '00000004-0000-0000-0000-000000000000' },
