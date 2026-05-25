@@ -16,10 +16,14 @@ public static class DbInitializer
         AppDbContext db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
         if (db.Database.ProviderName != "Microsoft.EntityFrameworkCore.InMemory")
+        {
             await db.Database.MigrateAsync();
+        }
 
         if (await db.Branches.AnyAsync())
+        {
             return;
+        }
 
         db.Branches.Add(new Branch { Id = BranchId, Name = "Leeds Branch" });
 
