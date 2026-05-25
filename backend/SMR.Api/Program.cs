@@ -2,7 +2,9 @@ using Asp.Versioning;
 using FluentValidation;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using SMR.Api.Infrastructure.Behaviors;
 using SMR.Api.Infrastructure.Data;
+using SMR.Api.Infrastructure.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddMediatR(cfg =>
     cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+
+builder.Services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
 
 builder.Services.AddValidatorsFromAssembly(typeof(Program).Assembly);
 
@@ -27,6 +31,7 @@ builder.Services.AddHealthChecks();
 
 var app = builder.Build();
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 app.MapControllers();
 app.MapHealthChecks("/health");
