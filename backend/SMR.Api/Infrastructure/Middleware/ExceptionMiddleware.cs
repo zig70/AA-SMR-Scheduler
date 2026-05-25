@@ -1,5 +1,6 @@
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
+using SMR.Api.Infrastructure.Exceptions;
 
 namespace SMR.Api.Infrastructure.Middleware;
 
@@ -37,25 +38,38 @@ public sealed class ExceptionMiddleware
 
             await context.Response.WriteAsJsonAsync(problem);
         }
+        catch (NotFoundException ex)
+        {
+            await WriteProblemAsync(context, StatusCodes.Status404NotFound, "Not found", ex.Message);
+        }
+        catch (ConflictException ex)
+        {
+            await WriteProblemAsync(context, StatusCodes.Status409Conflict, "Conflict", ex.Message);
+        }
         catch (Exception ex)
         {
             await HandleUnexpectedExceptionAsync(context, ex);
         }
     }
 
-    private static async Task HandleUnexpectedExceptionAsync(HttpContext context, Exception ex)
+    private static async Task WriteProblemAsync(HttpContext context, int statusCode, string title, string detail)
     {
-        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+        context.Response.StatusCode = statusCode;
         context.Response.ContentType = "application/problem+json";
 
         ProblemDetails problem = new()
         {
-            Status = StatusCodes.Status500InternalServerError,
-            Title = "An unexpected error occurred",
-            Detail = ex.Message,
+            Status = statusCode,
+            Title = title,
+            Detail = detail,
             Type = "https://tools.ietf.org/html/rfc7807"
         };
 
         await context.Response.WriteAsJsonAsync(problem);
+    }
+
+    private static async Task HandleUnexpectedExceptionAsync(HttpContext context, Exception ex)
+    {
+        await WriteProblemAsync(context, StatusCodes.Status500InternalServerError, "An unexpected error occurred", ex.Message);
     }
 }
