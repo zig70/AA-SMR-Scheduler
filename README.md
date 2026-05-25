@@ -6,7 +6,55 @@ Internal scheduling tool for the AA Service, Maintenance & Repair team. Replaces
 
 ## How to run it
 
-_To be completed during implementation._
+### Prerequisites
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (for SQL Server)
+- [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
+- [Node.js 20+](https://nodejs.org/)
+
+### 1. Configure environment (one-time)
+```powershell
+Copy-Item .env.example .env
+# Open .env and set a strong SA password, e.g.:
+# MSSQL_SA_PASSWORD=YourStrong_Passw0rd!
+```
+
+### 2. Start SQL Server
+```powershell
+docker-compose up -d
+```
+Wait ~20 seconds for the container health check to pass.
+
+### 3. Install frontend dependencies (one-time)
+```powershell
+cd frontend
+npm install
+```
+
+### 4. Start the backend API (new terminal)
+```powershell
+cd backend
+dotnet run --project SMR.Api/SMR.Api.csproj --urls http://localhost:5000
+```
+On first run the API applies the database migration and seeds Leeds Branch, three mechanics (Dave, Sarah, Tom), and 42 slots across the next 7 days automatically.
+
+### 5. Start the frontend (new terminal)
+```powershell
+cd frontend
+npm run dev
+```
+Open **http://localhost:5173** in your browser.
+
+### 6. Run Playwright E2E smoke tests (optional)
+Requires the backend and frontend already running (steps 4 & 5).
+```powershell
+cd e2e
+npx playwright install chromium   # one-time
+npx playwright test
+```
+
+---
+
+## What's done / what's not
 
 ---
 
@@ -20,7 +68,22 @@ Better separation of concerns, not confined by C# devs only, the SEO benefits of
 
 ## What's done / what's not
 
-_To be completed during implementation._
+### Done
+- **GET /api/v1/slots?branchId=** — returns available slots for a branch
+- **POST /api/v1/appointments** — books a slot (optimistic concurrency, 409 on double-book)
+- **GET /api/v1/appointments?mechanicId=** — returns a mechanic's booked appointments
+- EF Core migrations + auto-seed on first run (branch, mechanics, 7 days of slots)
+- React + Vite frontend: 7-column slot calendar, booking modal, mechanic appointments view
+- Act-As identity switcher (Admin / Mechanic Dave / Mechanic Sarah)
+- Playwright E2E smoke suite (booking path + mechanic context switch)
+- GitHub Actions CI (backend build + lint + tests, frontend lint + build, E2E)
+
+### Not done (future enhancements)
+- Authentication / real user login
+- SMS / Email notifications
+- Cancellation and rescheduling
+- Mobile-responsive layout
+- Admin slot management UI
 
 ---
 
