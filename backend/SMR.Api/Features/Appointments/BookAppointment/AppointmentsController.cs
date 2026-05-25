@@ -1,6 +1,7 @@
 using Asp.Versioning;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using SMR.Api.Features.Appointments.GetMechanicAppointments;
 
 namespace SMR.Api.Features.Appointments.BookAppointment;
 
@@ -23,5 +24,15 @@ public sealed class AppointmentsController : ControllerBase
     {
         AppointmentDto dto = await _mediator.Send(command, cancellationToken);
         return StatusCode(StatusCodes.Status201Created, dto);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetMechanicAppointmentsAsync(
+        [FromQuery] Guid mechanicId,
+        CancellationToken cancellationToken)
+    {
+        List<MechanicAppointmentDto> appointments = await _mediator.Send(
+            new GetMechanicAppointmentsQuery(mechanicId), cancellationToken);
+        return Ok(appointments);
     }
 }
