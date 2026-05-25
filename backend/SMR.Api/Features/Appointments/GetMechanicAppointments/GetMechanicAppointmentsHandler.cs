@@ -30,7 +30,10 @@ public sealed class GetMechanicAppointmentsHandler
                 a.Slot.StartTime,
                 a.Slot.EndTime,
                 a.CustomerName,
-                a.VehicleReg))
+                a.VehicleReg,
+                a.ServiceType,
+                a.Notes,
+                "SMR-" + a.Id.ToString().Replace("-", "").Substring(0, 8).ToUpper()))
             .ToListAsync(cancellationToken);
 
         return appointments;

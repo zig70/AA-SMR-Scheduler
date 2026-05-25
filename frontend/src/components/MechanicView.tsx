@@ -76,12 +76,23 @@ export function MechanicView() {
                   </span>
                 </div>
                 <div className="flex-1">
-                  <p className="text-white font-semibold">{appt.customerName}</p>
-                  <p className="text-zinc-400 text-sm">{appt.vehicleReg}</p>
-                  <p className="text-zinc-400 text-sm mt-1">
-                    {start.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}–
-                    {end.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
-                  </p>
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="text-white font-semibold">{appt.customerName}</p>
+                    <span className="text-amber-400 text-xs font-mono">{appt.reference}</span>
+                  </div>
+                  <p className="text-zinc-300 text-sm">{appt.vehicleReg}</p>
+                  <div className="flex items-center gap-2 mt-1">
+                    <span className="bg-zinc-700 text-zinc-300 text-xs px-2 py-0.5 rounded">
+                      {appt.serviceType}
+                    </span>
+                    <span className="text-zinc-400 text-sm">
+                      {start.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}–
+                      {end.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
+                    </span>
+                  </div>
+                  {appt.notes && (
+                    <p className="text-zinc-400 text-xs mt-1 italic">{appt.notes}</p>
+                  )}
                 </div>
               </li>
             );

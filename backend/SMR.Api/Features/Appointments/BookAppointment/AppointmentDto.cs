@@ -1,3 +1,5 @@
+using SMR.Api.Domain;
+
 namespace SMR.Api.Features.Appointments.BookAppointment;
 
 public sealed record AppointmentDto(
@@ -7,4 +9,7 @@ public sealed record AppointmentDto(
     DateTime StartTime,
     DateTime EndTime,
     string CustomerName,
-    string VehicleReg);
+    string VehicleReg,
+    ServiceType ServiceType,
+    string? Notes,
+    string Reference);
