@@ -15,7 +15,7 @@ _To be completed during implementation._
 **Option A** — React + Vite + TypeScript (frontend) · .NET 8 Web API (backend) · SQL Server via Docker · Entity Framework Core
 
 Chosen for: strong typing end-to-end, EF Core migrations for zero-setup schema, Vite for fast local dev iteration.
-
+Better separation of concerns, not confined by C# devs only, the SEO benefits of Blazor not required
 ---
 
 ## What's done / what's not
