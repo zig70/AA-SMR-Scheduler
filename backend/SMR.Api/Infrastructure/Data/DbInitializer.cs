@@ -5,10 +5,10 @@ namespace SMR.Api.Infrastructure.Data;
 
 public static class DbInitializer
 {
-    private static readonly Guid BranchId   = new("00000001-0000-0000-0000-000000000000");
-    private static readonly Guid DaveId     = new("00000002-0000-0000-0000-000000000000");
-    private static readonly Guid SarahId    = new("00000003-0000-0000-0000-000000000000");
-    private static readonly Guid TomId      = new("00000004-0000-0000-0000-000000000000");
+    private static readonly Guid BranchId = new("00000001-0000-0000-0000-000000000000");
+    private static readonly Guid DaveId = new("00000002-0000-0000-0000-000000000000");
+    private static readonly Guid SarahId = new("00000003-0000-0000-0000-000000000000");
+    private static readonly Guid TomId = new("00000004-0000-0000-0000-000000000000");
 
     public static async Task SeedAsync(WebApplication app)
     {
@@ -28,13 +28,13 @@ public static class DbInitializer
         db.Branches.Add(new Branch { Id = BranchId, Name = "Leeds Branch" });
 
         db.Mechanics.AddRange(
-            new Mechanic { Id = DaveId,  Name = "Dave",  BranchId = BranchId },
+            new Mechanic { Id = DaveId, Name = "Dave", BranchId = BranchId },
             new Mechanic { Id = SarahId, Name = "Sarah", BranchId = BranchId },
-            new Mechanic { Id = TomId,   Name = "Tom",   BranchId = BranchId }
+            new Mechanic { Id = TomId, Name = "Tom", BranchId = BranchId }
         );
 
         Guid[] mechanicIds = [DaveId, SarahId, TomId];
-        TimeSpan[] starts  = [TimeSpan.FromHours(9), TimeSpan.FromHours(13)];
+        TimeSpan[] starts = [TimeSpan.FromHours(9), TimeSpan.FromHours(13)];
 
         DateTime today = DateTime.UtcNow.Date;
 
@@ -47,12 +47,12 @@ public static class DbInitializer
                 {
                     db.Slots.Add(new Slot
                     {
-                        Id         = Guid.NewGuid(),
-                        BranchId   = BranchId,
+                        Id = Guid.NewGuid(),
+                        BranchId = BranchId,
                         MechanicId = mechanicId,
-                        StartTime  = date + start,
-                        EndTime    = date + start + TimeSpan.FromHours(2),
-                        IsBooked   = false,
+                        StartTime = date + start,
+                        EndTime = date + start + TimeSpan.FromHours(2),
+                        IsBooked = false,
                     });
                 }
             }
