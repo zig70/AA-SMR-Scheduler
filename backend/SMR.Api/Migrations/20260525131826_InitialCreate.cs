@@ -61,7 +61,7 @@ namespace SMR.Api.Migrations
                         column: x => x.BranchId,
                         principalTable: "Branches",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Slots_Mechanics_MechanicId",
                         column: x => x.MechanicId,

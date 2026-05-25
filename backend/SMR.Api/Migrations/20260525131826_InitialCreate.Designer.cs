@@ -12,7 +12,7 @@ using SMR.Api.Infrastructure.Data;
 namespace SMR.Api.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260525124544_InitialCreate")]
+    [Migration("20260525131826_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -148,7 +148,7 @@ namespace SMR.Api.Migrations
                     b.HasOne("SMR.Api.Domain.Branch", "Branch")
                         .WithMany()
                         .HasForeignKey("BranchId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("SMR.Api.Domain.Mechanic", "Mechanic")

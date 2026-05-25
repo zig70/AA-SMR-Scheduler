@@ -145,7 +145,7 @@ namespace SMR.Api.Migrations
                     b.HasOne("SMR.Api.Domain.Branch", "Branch")
                         .WithMany()
                         .HasForeignKey("BranchId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("SMR.Api.Domain.Mechanic", "Mechanic")
