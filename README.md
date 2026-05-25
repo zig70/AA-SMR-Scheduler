@@ -110,6 +110,7 @@ The actual UX suffered from using superpowers - and highlights the limitations o
 4. **Mobile-responsive layout** — the 7-column grid collapses poorly on small screens.
 5. **The filter actually filters** — currently the service type dropdown pre-fills the booking modal but does not filter the slot list (slots are bookable for any service type). If mechanics were to specialise, slots would need a `ServiceTypes` tag and the filter would hit the API.
 
+The workflows are failing on the end - can't resist a final commit to fix! 
 ---
 
 ## Known bugs / rough edges
