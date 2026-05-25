@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SMR.Api/SMR.Api.csproj" />
+  <Project Path="SMR.Tests/SMR.Tests.csproj" />
+</Solution>
